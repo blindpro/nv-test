@@ -15,5 +15,8 @@ this.title = "none";
 @callback = null;
 this.error_message = "invalid test.";
 }
-
+bool run()
+{
+return callback();
+}
 }

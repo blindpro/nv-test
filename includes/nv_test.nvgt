@@ -1,5 +1,5 @@
 #include"test.nvgt"
-funcdef void test_func();
+funcdef bool test_func();
 class nv_tester
 {
 test[] tests;
@@ -10,5 +10,12 @@ test t(title,callback,error_message);
 tests.insert_last(t);
 amount++;
 }
-
+void run_tests()
+{
+for(int i = 0; i<tests.length(); i++)
+{
+test@ t = tests[i];
+assert(t.run(),t.error_message);
+}
+}
 }
