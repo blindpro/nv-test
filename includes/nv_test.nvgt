@@ -1,0 +1,14 @@
+#include"test.nvgt"
+funcdef void test_func();
+class nv_tester
+{
+test[] tests;
+int amount = 0;
+void add_test(string title,test_func@ callback,string error_message)
+{
+test t(title,callback,error_message);
+tests.insert_last(t);
+amount++;
+}
+
+}
