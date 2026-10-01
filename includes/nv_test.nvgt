@@ -10,12 +10,31 @@ test t(title,callback,error_message);
 tests.insert_last(t);
 amount++;
 }
-void run_tests()
+void run_until_fail()
 {
 for(int i = 0; i<tests.length(); i++)
 {
 test@ t = tests[i];
 assert(t.run(),t.error_message);
+}
+}
+void run_tests()
+{
+int failed = 0;
+int success = 0;
+for(int i = 0; i<tests.length(); i++)
+{
+test t = tests[i];
+bool result = t.run();
+if(result)
+{
+success++;
+}
+else
+{
+failed++;
+}
+
 }
 }
 }
