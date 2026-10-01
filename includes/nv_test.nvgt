@@ -4,6 +4,19 @@ class nv_tester
 {
 test[] tests;
 int amount = 0;
+string filename;
+nv_tester(string filename = "test_log.log")
+{
+this.filename = filename;
+}
+void clear_write_log()
+{
+file_put_contents(filename,"");
+}
+void write_log(string message)
+{
+file_put_contents(filename,message);
+}
 void add_test(string title,test_func@ callback,string error_message)
 {
 test t(title,callback,error_message);
@@ -20,6 +33,7 @@ assert(t.run(),t.error_message);
 }
 void run_tests()
 {
+write_log("running test sweet. "+amount+" tests.");
 int failed = 0;
 int success = 0;
 for(int i = 0; i<tests.length(); i++)
@@ -34,7 +48,8 @@ else
 {
 failed++;
 }
-
+write_log("test "+i+". "+result);
 }
+write_log(amount+" tests. "+success+" past, "+failed+" failed.");
 }
 }
