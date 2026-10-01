@@ -9,7 +9,7 @@ nv_tester(string filename = "test_log.log")
 {
 this.filename = filename;
 }
-void clear_write_log()
+void clear_log()
 {
 file_put_contents(filename,"");
 }
@@ -33,6 +33,7 @@ assert(t.run(),t.error_message);
 }
 void run_tests()
 {
+clear_log();
 write_log("running test sweet. "+amount+" tests.");
 int failed = 0;
 int success = 0;
@@ -51,5 +52,7 @@ failed++;
 write_log("test "+i+". "+result);
 }
 write_log(amount+" tests. "+success+" past, "+failed+" failed.");
+}
+
 }
 }
